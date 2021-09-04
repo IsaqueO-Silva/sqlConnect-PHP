@@ -69,16 +69,6 @@ class SqlConnectModel {
     }
     #endregion
 
-    public function teste123() {
-        /* array usado no retorno da função */
-        $result = [];
-
-        $result['error']    = true;
-        $result['message']  = 'teste';
-
-        $this->set_result(json_encode($result));  
-    }
-
     /* Função utilizada na conexão com o banco de dados. */
     public function conectaBancoDadosModel() {
         /* Array usado no retorno da função */
