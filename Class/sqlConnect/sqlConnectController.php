@@ -75,11 +75,11 @@ class SqlConnectController {
 
         /* Instânciando o objeto Model */
         $sqlConnectModel = new SqlConnectModel([
-            'driver'    => sanitizar($this->get_driver()),
-            'server'    => sanitizar($this->get_server()),
-            'usuario'   => sanitizar($this->get_usuario()),
-            'senha'     => sanitizar($this->get_senha()),
-            'database'  => sanitizar($this->get_database())
+            'driver'    => $this->get_driver(),
+            'server'    => $this->get_server(),
+            'usuario'   => $this->get_usuario(),
+            'senha'     => $this->get_senha(),
+            'database'  => $this->get_database()
         ]);
 
         $sqlConnectModel->conectaBancoDadosModel();
@@ -99,11 +99,11 @@ if(isset($_REQUEST['status'])) {
 
         case 'conectaBancoDados' :
             $sqlConnectController = new SqlConnectController([
-                'driver'    => $_REQUEST['driver'],
-                'server'    => $_REQUEST['server'],
-                'usuario'   => $_REQUEST['usuario'],
-                'senha'     => $_REQUEST['senha'],
-                'database'  => $_REQUEST['database']
+                'driver'    => sanitizar($_REQUEST['driver']),
+                'server'    => sanitizar($_REQUEST['server']),
+                'usuario'   => sanitizar($_REQUEST['usuario']),
+                'senha'     => sanitizar($_REQUEST['senha']),
+                'database'  => sanitizar($_REQUEST['database'])
             ]);
 
             $sqlConnectController->conectaBancoDadosController();

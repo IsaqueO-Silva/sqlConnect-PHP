@@ -79,7 +79,7 @@ class SqlConnectModel {
             if(empty($this->get_driver()) || empty($this->get_server()) || empty($this->get_usuario()) || empty($this->get_database())) {
                 /* Retorno */
                 $result['error']    = true;
-                $result['message']  = 'Por favor, preencha os campos, driver, servidor, usuário e banco de dados!';
+                $result['message']  = 'Por favor, preencha os seguintes campos, driver, servidor, usuário e banco de dados!';
 
                 $this->set_result(json_encode($result));
             }
