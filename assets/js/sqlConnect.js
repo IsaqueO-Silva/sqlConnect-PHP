@@ -15,13 +15,8 @@ function conectarBancoDados() {
             /* Convertendo o JSON retornado em objeto(Object) */
             let result = JSON.parse(this.responseText);
 
-            /* Mostrando a resposta do servidor */
-            if(result.error) {
-                document.getElementById('status').innerHTML = '<div class="alert alert-danger" role="alert"><strong>'+result.message+'</strong></alert>';
-            }
-            else {
-                document.getElementById('status').innerHTML = '<div class="alert alert-success" role="alert"><strong>'+result.message+'</strong></alert>';
-            }
+            /* Mostrando a resposta do servidor - (result.error pode ser true | false) */
+            document.getElementById('status').innerHTML = (result.error) ? '<div class="alert alert-danger" role="alert"><strong>'+result.message+'</strong></alert>' : '<div class="alert alert-success" role="alert"><strong>'+result.message+'</strong></alert>';
         }
     }
 
