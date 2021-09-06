@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../assets/utilitarios/utilitarios.php');
+require_once('../../utilitarios/utilitarios.php');
 require_once('sqlConnectModel.php');
 
 class SqlConnectController {

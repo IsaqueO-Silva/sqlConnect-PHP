@@ -83,6 +83,9 @@ class DAO {
             $result['message']  = 'Conectado com sucesso!';
 
             $this->set_result(json_encode($result));
+
+            /* Fechando a conexão */
+            $conn = null;
         }
         catch(PDOException $e) {
             /* Retorno */
