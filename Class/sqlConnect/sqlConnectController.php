@@ -99,11 +99,11 @@ if(isset($_REQUEST['status'])) {
 
         case 'conectaBancoDados' :
             $sqlConnectController = new SqlConnectController([
-                'driver'    => sanitizar($_REQUEST['driver']),
-                'server'    => sanitizar($_REQUEST['server']),
-                'usuario'   => sanitizar($_REQUEST['usuario']),
-                'senha'     => sanitizar($_REQUEST['senha']),
-                'database'  => sanitizar($_REQUEST['database'])
+                'driver'    => Utilitarios::sanitizar($_REQUEST['driver']),
+                'server'    => Utilitarios::sanitizar($_REQUEST['server']),
+                'usuario'   => Utilitarios::sanitizar($_REQUEST['usuario']),
+                'senha'     => Utilitarios::sanitizar($_REQUEST['senha']),
+                'database'  => Utilitarios::sanitizar($_REQUEST['database'])
             ]);
 
             $sqlConnectController->conectaBancoDadosController();
