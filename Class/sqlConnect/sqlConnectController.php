@@ -20,51 +20,51 @@ class SqlConnectController {
         $this->database = $args['database'];
     }
 
-    public function set_driver($driver) {
+    public function setDriver($driver) {
         $this->driver = $driver;
     }
 
-    public function get_driver() {
+    public function getDriver() {
         return $this->driver;
     }
 
-    public function set_server($server) {
+    public function setServer($server) {
         $this->server = $server;
     }
 
-    public function get_server() {
+    public function getServer() {
         return $this->server;
     }
 
-    public function set_usuario($usuario) {
+    public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
 
-    public function get_usuario() {
+    public function getUsuario() {
         return $this->usuario;
     }
 
-    public function set_senha($senha) {
+    public function setSenha($senha) {
         $this->senha = $senha;
     }
 
-    public function get_senha() {
+    public function getSenha() {
         return $this->senha;
     }
 
-    public function set_database($database) {
+    public function setDatabase($database) {
         $this->database = $database;
     }
 
-    public function get_database() {
+    public function getDatabase() {
         return $this->database;
     }
 
-    public function set_result($result) {
+    public function setResult($result) {
         $this->result = $result;
     }
 
-    public function get_result() {
+    public function getResult() {
         return $this->result;
     }
     #endregion
@@ -74,20 +74,20 @@ class SqlConnectController {
 
         /* Instânciando o objeto Model */
         $sqlConnectModel = new SqlConnectModel([
-            'driver'    => $this->get_driver(),
-            'server'    => $this->get_server(),
-            'usuario'   => $this->get_usuario(),
-            'senha'     => $this->get_senha(),
-            'database'  => $this->get_database()
+            'driver'    => $this->getDriver(),
+            'server'    => $this->getServer(),
+            'usuario'   => $this->getUsuario(),
+            'senha'     => $this->getSenha(),
+            'database'  => $this->getDatabase()
         ]);
 
         $sqlConnectModel->conectaBancoDadosModel();
 
         /* Capturando o retorno do Model */
-        $this->set_result($sqlConnectModel->get_result());
+        $this->setResult($sqlConnectModel->getResult());
 
         /* Retorno do Controller */
-        echo $this->get_result();
+        echo $this->getResult();
     }
 }
 

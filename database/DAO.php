@@ -18,51 +18,51 @@ class DAO {
         $this->database = $args['database'];
     }
 
-    public function set_driver($driver) {
+    public function setDriver($driver) {
         $this->driver = $driver;
     }
 
-    public function get_driver() {
+    public function getDriver() {
         return $this->driver;
     }
 
-    public function set_server($server) {
+    public function setServer($server) {
         $this->server = $server;
     }
 
-    public function get_server() {
+    public function getServer() {
         return $this->server;
     }
 
-    public function set_usuario($usuario) {
+    public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
 
-    public function get_usuario() {
+    public function getUsuario() {
         return $this->usuario;
     }
 
-    public function set_senha($senha) {
+    public function setSenha($senha) {
         $this->senha = $senha;
     }
 
-    public function get_senha() {
+    public function getSenha() {
         return $this->senha;
     }
 
-    public function set_database($database) {
+    public function setDatabase($database) {
         $this->database = $database;
     }
 
-    public function get_database() {
+    public function getDatabase() {
         return $this->database;
     }
 
-    public function set_result($result) {
+    public function setResult($result) {
         $this->result = $result;
     }
 
-    public function get_result() {
+    public function getResult() {
         return $this->result;
     }
     #endregion
@@ -74,7 +74,7 @@ class DAO {
             $result = [];
 
             /* Instânciando o objeto PDO */
-            $conn = new PDO($this->get_driver().':host='.$this->get_server().';dbname='.$this->get_database(),$this->get_usuario(),$this->get_senha());
+            $conn = new PDO($this->getDriver().':host='.$this->getServer().';dbname='.$this->getDatabase(),$this->getUsuario(),$this->getSenha());
             
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -82,7 +82,7 @@ class DAO {
             $result['error']    = false;
             $result['message']  = 'Conectado com sucesso!';
 
-            $this->set_result(json_encode($result));
+            $this->setResult(json_encode($result));
 
             /* Fechando a conexão */
             $conn = null;
@@ -90,9 +90,9 @@ class DAO {
         catch(PDOException $e) {
             /* Retorno */
             $result['error']    = true;
-            $result['message']  = 'Erro ao inicializar a conexão. Por favor contate o suporte técnico!';
+            $result['message']  = 'Erro ao inicializar a conexão, verifique as informações de conexão e tente novamente!';
 
-            $this->set_result(json_encode($result));
+            $this->setResult(json_encode($result));
         }
     }
 }

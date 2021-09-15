@@ -18,51 +18,51 @@ class SqlConnectModel {
         $this->database = $args['database'];
     }
 
-    public function set_driver($driver) {
+    public function setDriver($driver) {
         $this->driver = $driver;
     }
 
-    public function get_driver() {
+    public function getDriver() {
         return $this->driver;
     }
 
-    public function set_server($server) {
+    public function setServer($server) {
         $this->server = $server;
     }
 
-    public function get_server() {
+    public function getServer() {
         return $this->server;
     }
 
-    public function set_usuario($usuario) {
+    public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
 
-    public function get_usuario() {
+    public function getUsuario() {
         return $this->usuario;
     }
 
-    public function set_senha($senha) {
+    public function setSenha($senha) {
         $this->senha = $senha;
     }
 
-    public function get_senha() {
+    public function getSenha() {
         return $this->senha;
     }
 
-    public function set_database($database) {
+    public function setDatabase($database) {
         $this->database = $database;
     }
 
-    public function get_database() {
+    public function getDatabase() {
         return $this->database;
     }
 
-    public function set_result($result) {
+    public function setResult($result) {
         $this->result = $result;
     }
 
-    public function get_result() {
+    public function getResult() {
         return $this->result;
     }
     #endregion
@@ -74,28 +74,28 @@ class SqlConnectModel {
 
         try {
             /* Campos obrigatórios */
-            if(empty($this->get_driver()) || empty($this->get_server()) || empty($this->get_usuario()) || empty($this->get_database())) {
+            if(empty($this->getDriver()) || empty($this->getServer()) || empty($this->getUsuario()) || empty($this->getDatabase())) {
                 /* Retorno */
                 $result['error']    = true;
                 $result['message']  = 'Por favor, preencha os seguintes campos, driver, servidor, usuário e banco de dados!';
 
-                $this->set_result(json_encode($result));
+                $this->setResult(json_encode($result));
             }
             else {
                 /* Instânciando o objeto DAO */
                 $dao = new DAO([
-                    'driver'    => $this->get_driver(),
-                    'server'    => $this->get_server(),
-                    'usuario'   => $this->get_usuario(),
-                    'senha'     => $this->get_senha(),
-                    'database'  => $this->get_database()
+                    'driver'    => $this->getDriver(),
+                    'server'    => $this->getServer(),
+                    'usuario'   => $this->getUsuario(),
+                    'senha'     => $this->getSenha(),
+                    'database'  => $this->getDatabase()
                 ]);
 
                 /* Função da camada DAO responsável pela conexão com o bd */
                 $dao->connect();
 
                 /* Capturando o retorno do DAO */
-                $this->set_result($dao->get_result());
+                $this->setResult($dao->getResult());
             }
         }
         catch(Exception $e) {
@@ -103,7 +103,7 @@ class SqlConnectModel {
             $result['error']    = true;
             $result['message']  = 'Erro ao inicializar a conexão!';
 
-            $this->set_result(json_encode($result));
+            $this->setResult(json_encode($result));
         }
     }
 }
