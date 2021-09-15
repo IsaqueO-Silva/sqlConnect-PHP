@@ -1,7 +1,6 @@
 <?php
 
-require_once('../../utilitarios/utilitarios.php');
-require_once('sqlConnectModel.php');
+require_once('..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 
 class SqlConnectController {
 

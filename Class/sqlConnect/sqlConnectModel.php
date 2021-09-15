@@ -1,7 +1,5 @@
 <?php
 
-require_once('../../database/DAO.php');
-
 class SqlConnectModel {
 
     private $driver;
