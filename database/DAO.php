@@ -90,9 +90,9 @@ class DAO {
         catch(PDOException $e) {
             /* Retorno */
             $result['error']    = true;
-            $result['message']  = 'Erro ao inicializar a conexão, '.$e->getMessage();
+            $result['message']  = 'Erro ao inicializar a conexão. Por favor contate o suporte técnico!';
 
-            $this->set_result(json_encode($result));                        
+            $this->set_result(json_encode($result));
         }
     }
 }
