@@ -13,7 +13,7 @@ class SqlConnectController {
 
     #region
     public function __construct($args) {
-        $this->driver   = strtolower($args['driver']);
+        $this->driver   = $args['driver'];
         $this->server   = $args['server'];
         $this->usuario  = $args['usuario'];
         $this->senha    = $args['senha'];

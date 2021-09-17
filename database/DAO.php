@@ -73,9 +73,30 @@ class DAO {
             /* array usado no retorno da função */
             $result = [];
 
-            /* Instânciando o objeto PDO */
-            $conn = new PDO($this->getDriver().':host='.$this->getServer().';dbname='.$this->getDatabase(),$this->getUsuario(),$this->getSenha());
-            
+            /* definindo a string de conexão a partir do driver */
+            switch($this->getDriver()) {
+
+                case 'mysql':
+                    $conn = new PDO($this->getDriver().':host='.$this->getServer().';dbname='.$this->getDatabase(),$this->getUsuario(),$this->getSenha());
+                break;
+
+                case 'sqlsrv':
+                    /* Está string de conexão está usando a porta 1433(porta padrão do sql) */
+                    /* Em caso de erro na conexão com o sql tente as seguintes tratativas
+                    1 - Sql Server Configuration Manager > Configurações de Rede do SQL Server > Protocolos para o SQLEXPRESS >
+                    TCP IP > Endereços IP > IPAll > Na opção porta TCP defina a mesma como 1433
+                    2 - Sql Server Configuration Manager > Configurações de Rede do SQL Server > Protocolos para o SQLEXPRESS >
+                    Habilite os 3 serviços, Memória Compartilhada, Pipes Nomeados e TCP/IP
+                    3 - Reinicie o servidor(Microsoft SQL Server Management Studio)
+                    4 - No firewall do windows crie uma regra de entrada para a porta 1433 
+                    Estás tratativas foram feitas no Sql Server Configuration Manager 2019 e no MSSMS 18 */
+                    $conn = new PDO($this->getDriver().':Database='.$this->getDatabase().';server='.$this->getServer().',1433\SQLEXPRESS;ConnectionPooling=0',$this->getUsuario(),$this->getSenha());
+
+                    /* Em caso de não haver uma porta definida para o sql use a string abaixo */
+                    //$conn = new PDO($this->getDriver().':Database='.$this->getDatabase().';server='.$this->getServer().'\SQLEXPRESS;ConnectionPooling=0',$this->getUsuario(),$this->getSenha());
+                break;
+            }
+
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             /* Retorno */
