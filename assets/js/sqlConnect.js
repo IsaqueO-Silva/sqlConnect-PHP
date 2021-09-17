@@ -17,6 +17,9 @@ function conectarBancoDados() {
 
             /* Mostrando a resposta do servidor - (result.error pode ser true | false) */
             document.getElementById('status').innerHTML = (result.error) ? '<div class="alert alert-danger" role="alert"><strong>'+result.message+'</strong></alert>' : '<div class="alert alert-success" role="alert"><strong>'+result.message+'</strong></alert>';
+
+            /* Status de erro do PDO */
+            document.getElementById('status').innerHTML += (result.pdoException) ? '<div class="alert alert-warning" role="alert"><strong>'+result.pdoException+'</strong></alert>' : '';
         }
     }
 

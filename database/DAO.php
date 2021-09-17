@@ -110,8 +110,12 @@ class DAO {
         }
         catch(PDOException $e) {
             /* Retorno */
-            $result['error']    = true;
-            $result['message']  = 'Erro ao inicializar a conexão, verifique as informações de conexão e tente novamente!';
+            $result['error']        = true;
+            $result['message']      = 'Erro ao inicializar a conexão, verifique as informações de conexão e tente novamente!';
+
+            /* Status de erro do PDO
+            obs: uma das mensagens de erro do mysql precisou ser encodada em utf8 */
+            ($this->getDriver() == 'mysql') ? $result['pdoException'] = utf8_encode($e->getMessage()) : $result['pdoException'] = $e->getMessage();
 
             $this->setResult(json_encode($result));
         }
