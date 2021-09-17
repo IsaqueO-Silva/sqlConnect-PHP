@@ -1,5 +1,5 @@
 # sqlConnect-PHP
-Aplicação web MVC usada para conexão com banco de dados MySQL.
+Aplicação web MVC usada para conexão com banco de dados MySQL, SQL.
 
 PHP | PDO | JS | AJAX | JSON | MYSQL | BOOTSTRAP
 
